@@ -1,5 +1,5 @@
 import torch
-from vit import VisionTransformer
+from vit import VisionTransformer, vit_tiny, vit_small, vit_base, vit_large
 from dataset import my_dataset
 import torch.nn as nn
 from torch.utils.data import DataLoader
@@ -23,7 +23,12 @@ if not os.path.exists(log_dir):
 writer = SummaryWriter(log_dir=log_dir)
 
 dataset = my_dataset(is_train=True)  # Initialize the dataset
-model = VisionTransformer().to(device)
+
+model = vit_base(num_channels=1, num_labels=10).to(device) 
+print(f"Model: ViT-Base")
+print(f"Total parameters: {model.get_num_params():,}")
+print(f"Trainable parameters: {model.get_num_trainable_params():,}")
+
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 dataloader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True, num_workers=4, drop_last=True)
 
