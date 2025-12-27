@@ -9,7 +9,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 max_epoch = 100
 batch_size = 64
-device = "cuda:3"
+device = "cuda:0"
 save_model_path = "./saved_model"
 log_dir = "./logs"
 

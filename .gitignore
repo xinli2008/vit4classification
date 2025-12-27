@@ -136,3 +136,4 @@ pretrained_models/
 debug.py
 sd-model-finetuned-lora
 mnist/
+.vscode
